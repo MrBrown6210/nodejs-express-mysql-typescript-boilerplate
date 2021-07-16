@@ -7,6 +7,7 @@ import routes from "./routes";
 import Router from "./routes";
 import dbConfig from "./config/database";
 import { createConnection } from "typeorm";
+import { APP_PORT, APP_PREFIX_PATH } from "./config/env";
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,12 +27,12 @@ app.use(
     })
   );
 
-app.use(routes)
+app.use(APP_PREFIX_PATH, routes)
 
 createConnection(dbConfig)
   .then((_connection) => {
     app.listen(PORT, () => {
-      console.log("Server is running on port", PORT);
+      console.log("Server is running on port", APP_PORT);
     });
   })
   .catch((err) => {
