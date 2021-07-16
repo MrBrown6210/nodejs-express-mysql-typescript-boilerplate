@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: someroot
+      MYSQL_DATABASE: sample
+      MYSQL_USER: samplesql
+      MYSQL_PASSWORD: samplesample
   app:
     build:
       context: .
@@ -9,3 +16,11 @@ services:
       - ./src:/app/src
     ports:
       - "8000:5000"
+    depends_on:
+      - db
+    environment:
+      - MYSQL_DB=sample
+      - MYSQL_USER=samplesql
+      - MYSQL_PASSWORD=samplesample
+      - MYSQL_HOST=db
+  

@@ -1,0 +1,14 @@
+# GET http://localhost:8000/user
+
+
+
+
+
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "firstName": "http",
+    "lastName": "wow"
+}
+
