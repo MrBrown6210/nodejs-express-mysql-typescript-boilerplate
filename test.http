@@ -15,3 +15,7 @@ GET {{baseUrl}}/comments
 ###
 
 POST {{baseUrl}}/comments
+
+###
+
+GET {{baseUrl}}/stores
