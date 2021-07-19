@@ -9,11 +9,26 @@ import dbConfig from "./config/database";
 import { createConnection } from "typeorm";
 import { APP_PORT, APP_PREFIX_PATH } from "./config/env";
 
+import helmet from 'helmet'
+import compression from 'compression'
+import cors from 'cors'
+
 const app: Application = express();
+
+// set security HTTP headers
+app.use(helmet())
 
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
+
+// parse urlencoded request body
+app.use(express.urlencoded({ extended: true }))
+
+// gzip compression
+app.use(compression())
+
+app.use(cors())
 
 app.use(
     "/docs",
