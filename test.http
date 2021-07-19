@@ -1,10 +1,6 @@
-# GET http://localhost:8000/user
+@baseUrl = http://localhost:8000
 
-
-
-
-
-POST http://localhost:8000/users
+POST {{baseUrl}}/comments
 Content-Type: application/json
 
 {
@@ -12,3 +8,10 @@ Content-Type: application/json
     "lastName": "wow"
 }
 
+###
+
+GET {{baseUrl}}/comments
+
+###
+
+POST {{baseUrl}}/comments
